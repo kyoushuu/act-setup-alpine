@@ -13,5 +13,5 @@ export | sudo tee "$rootfs"/tmp/.env.sh >/dev/null
 
 exec sudo chroot "$rootfs" \
 	/bin/su "$user" \
-		/bin/sh -lc ". /tmp/.env.sh; cd '$oldpwd' 2>/dev/null; exec \"\$@\"" -- \
+		/bin/sh -lc ". /tmp/.env.sh; cd '$oldpwd' 2>/dev/null; ls -l /; ls -l /var; ls -l /var/run; ls -l /var/run/act; ls -l /var/run/act/workflow; exec \"\$@\"" -- \
 			/bin/sh -eo pipefail "$@"
