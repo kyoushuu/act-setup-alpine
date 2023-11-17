@@ -266,6 +266,7 @@ mount -v -t proc none proc
 mount_bind /dev dev
 mount_bind /sys sys
 mount_bind "$GITHUB_WORKSPACE" "${GITHUB_WORKSPACE#/}"
+mount_bind /var/run/act
 
 # Some systems (Ubuntu?) symlinks /dev/shm to /run/shm.
 if [ -L /dev/shm ] && [ -d /run/shm ]; then
