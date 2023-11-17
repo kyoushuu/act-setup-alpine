@@ -11,7 +11,7 @@ rootfs=$(cd "$(dirname "$0")"/.. && pwd)
 oldpwd=$(pwd)
 export | sudo tee "$rootfs"/tmp/.env.sh >/dev/null
 
-echo exec sudo chroot "$rootfs" \
+exec sudo chroot "$rootfs" \
 	/bin/su "$user" \
 		/bin/sh -lc ". /tmp/.env.sh; cd '$oldpwd' 2>/dev/null; exec \"\$@\"" -- \
 			/bin/sh -eo pipefail "$@"
